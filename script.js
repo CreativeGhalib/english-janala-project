@@ -10,7 +10,17 @@ const loadLevelWord = (id) => {
     .then((data)=> displayLevelWord(data.data));
 }
 const displayLevelWord = (words) => {
-  console.log(words)
+  const wordContainer = document.getElementById('word-container');
+  // wordContainer.innerHTML = "";
+  words.forEach(word => {
+    console.log(word);
+    const cardDiv = document.createElement('div');
+    cardDiv.innerHTML = `
+    <p>cat</p>
+    `;
+    wordContainer.appendChild(cardDiv);
+
+  });
 }
 const displayLesson = (lessons) => {
 
