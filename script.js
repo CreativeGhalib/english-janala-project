@@ -16,11 +16,15 @@ const loadLevelWord = (id) => {
     .then(res => res.json())
     .then((data) => {
       removeActiveClass();//this function will remove the all active class from all the buttons when click on another button in order to change the color of the button and show that this is the current lesson. note: active class is defined in styles.css <file className=""></file>
-      const clcikBtn=document.getElementById(`lesson-btn-${id}`);//get the button which is clicked by id and add active class to it in order to change the color of the button and show that this is the current lesson. note: active class is defined in styles.css file.
+      const clcikBtn = document.getElementById(`lesson-btn-${id}`);//get the button which is clicked by id and add active class to it in order to change the color of the button and show that this is the current lesson. note: active class is defined in styles.css file.
+      console.log(clcikBtn)
       clcikBtn.classList.add("active");//using active class to change the color of the button when click and show that this is the current lesson. note: active class is defined in styles.css file.
       displayLevelWord(data.data);
 
     });
+}
+const loadWordDetail = (id) => {
+  const url = `https://openapi.programming-hero.com/api/word/${id}`;
 }
 const displayLevelWord = (words) => {
   const wordContainer = document.getElementById('word-container');
@@ -39,7 +43,6 @@ const displayLevelWord = (words) => {
 //     "word": "Rain",
 //     "meaning": "বৃষ্টি",
 //     "pronunciation": "রেইন"
-// }
   words.forEach(word => {
     console.log(word);
     const cardDiv = document.createElement('div');
@@ -49,13 +52,14 @@ const displayLevelWord = (words) => {
       <p class="font-semibold font-inter">meaning/pronunciation</p>
       <div class="font-medium text-2xl font-bangla">${word.meaning ? word.meaning : 'অর্থ পাওয়া যায়নি !!'}/${word.pronunciation ? word.pronunciation : 'উচ্চারণ পাওয়া যায়নি !!'}</div>
       <div class="flex justify-between items-center">
-        <button class="btn bg-[#1A91FF1A] hover:bg-[#1A91FF70]"><i class="fa-solid fa-circle-info"></i></button>
+        <button onclick="loadWordDetail(${word.id})"class="btn bg-[#1A91FF1A] hover:bg-[#1A91FF70]"><i class="fa-solid fa-circle-info"></i></button>
+
         <button class="btn bg-[#1A91FF1A] hover:bg-[#1A91FF70]"><i class="fa-solid fa-volume-high"></i></button>
       </div>
     </div>
     `;
+    // 54 line e onclick="my_modal_5.showModal()" এই code টা modal এ click করার জন্য use করা হয়েছে। note: my_modal_5.showModal() এই code টা modal এর id এর সাথে match করতে হবে। অর্থাৎ, যদি modal এর id my_modal_5 হয়, তাহলে এই code টাও my_modal_5.showModal() হতে হবে। এটা হলো JavaScript এর syntax যা modal কে show করার জন্য use করা হয়।
     wordContainer.appendChild(cardDiv);
-
   });
 }
 const displayLesson = (lessons) => {
