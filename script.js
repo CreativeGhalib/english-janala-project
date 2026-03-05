@@ -32,9 +32,9 @@ const displayLevelWord = (words) => {
     const cardDiv = document.createElement('div');
     cardDiv.innerHTML = `
     <div class="bg-white rounded-xl shadow-sm text-center py-10 px-5 space-y-4">
-      <h2 class="font-bold text-2xl font-inter">${word.word}</h2>
+      <h2 class="font-bold text-2xl font-inter">${word.word ? word.word : 'শব্দ পাওয়া যায়নি !!'}</h2>
       <p class="font-semibold font-inter">meaning/pronunciation</p>
-      <div class="font-medium text-2xl font-bangla">${word.meaning}/${word.pronunciation}</div>
+      <div class="font-medium text-2xl font-bangla">${word.meaning ? word.meaning : 'অর্থ পাওয়া যায়নি !!'}/${word.pronunciation ? word.pronunciation : 'উচ্চারণ পাওয়া যায়নি !!'}</div>
       <div class="flex justify-between items-center">
         <button class="btn bg-[#1A91FF1A] hover:bg-[#1A91FF70]"><i class="fa-solid fa-circle-info"></i></button>
         <button class="btn bg-[#1A91FF1A] hover:bg-[#1A91FF70]"><i class="fa-solid fa-volume-high"></i></button>
